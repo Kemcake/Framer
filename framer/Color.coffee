@@ -1,3 +1,6 @@
+# A Color class to deal with colors easily. See issue #160
+# "Integrate something like ColorJS into Framer so we can for example add, darken and saturate colors. Tweening colors should be done according to: http://rileyjshaw.com/blog/hue-angle-transitions/"
+
 class exports.Color
 	
 	hex: ""
@@ -7,11 +10,17 @@ class exports.Color
 	alpha: 1
 	_css_colors: {aliceblue:'#F0F8FF', red:'#FF0000'}
   
+  # Color can be created using :
+  #  - css common color ("red", "green", etc.)
+  #  - hex string ("#3393FF" or "#666")
+  #  - rgba object ({red:255, green:140, blue: 20, alpha:0.5}) -- alpha optional
+  #  - rgb(a) array [255,140,20,0.5] -- alpha optional
+  
 	constructor: (options) ->
     
 	  if typeof options == "string"
 	    if @_css_colors[options] 
-	      @fromHex @_css_colors[options]
+	      @_colorFromHex @_css_colors[options]
 	      return
 	    options = {hex:options}
 	    
@@ -27,7 +36,7 @@ class exports.Color
 	    
 	 
 	  if options.hasOwnProperty "hex"
-		  @fromHex options["hex"]
+		  @_colorFromHex options["hex"]
 		  return
 		
 	  if options.hasOwnProperty "red"
@@ -43,7 +52,7 @@ class exports.Color
 		  @alpha = options["alpha"]
             
 	
-  colorFromHex: (hex) -> 
+  _colorFromHex: (hex) -> 
     hex = hex.replace(/\#/g, "")
     @hex = hex
     if hex.length == 3 
