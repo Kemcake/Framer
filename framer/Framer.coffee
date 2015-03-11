@@ -13,6 +13,7 @@ Framer.Events = (require "./Events").Events
 Framer.Animation = (require "./Animation").Animation
 Framer.AnimationGroup = (require "./AnimationGroup").AnimationGroup
 Framer.Screen = (require "./Screen").Screen
+Framer.Color = (require "./Color").Color
 Framer.print = (require "./Print").print
 
 _.extend window, Framer if window
