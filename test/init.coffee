@@ -25,4 +25,5 @@ require "./tests/CompatTest"
 require "./tests/ImporterTest"
 require "./tests/LayerAnimationTest"
 require "./tests/ContextTest"
+require "./tests/ColorTest"
 
